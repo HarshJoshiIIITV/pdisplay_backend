@@ -17,21 +17,21 @@ const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
-app.get('/data', (req, res) => {
-	db.select('*').from('posts').then((posts)=>{
-		if (posts.length) {
-			res.send(posts);
-		  } else {
-			res.status(400).json('Not found')
-		  }
-	})
-});
+// app.get('/data', (req, res) => {
+// 	db.select('*').from('posts').then((posts)=>{
+// 		if (posts.length) {
+// 			res.send(posts);
+// 		  } else {
+// 			res.status(400).json('Not found')
+// 		  }
+// 	})
+// });
 
 app.post('/', (req, res) => {
 	const { title, description,image } = req.body;
 	console.log(req);
 	console.log(title,description,image);
-	// db('posts').insert({title_db: title,description_db:description,image_db:image})
+	db('posts').insert({title_db: title,description_db:description,image_db:image})
 });
 
 
