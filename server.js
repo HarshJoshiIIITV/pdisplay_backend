@@ -16,6 +16,11 @@ const db = knex({
 const app = express();
 
 app.use(cors());
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+  });
 app.use(bodyParser.json());
 app.get('/', (req, res) => {
 	db.select('*').from('posts').then((posts)=>{
@@ -29,6 +34,7 @@ app.get('/', (req, res) => {
 
 app.post('/register', (req, res) => {
 	const { title, description,image } = req.body;
+	console.log(req);
 	console.log(title,description,image);
 	db('posts').insert({title_db: title,description_db:description,image_db:image})
 });
