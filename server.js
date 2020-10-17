@@ -18,13 +18,13 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.get('/', (req, res) => {
-	// db.select('*').from('posts').then((posts)=>{
-	// 	if (posts.length) {
-	// 		console.log(posts)
-	// 	  } else {
-	// 		res.status(400).json('Not found')
-	// 	  }
-	// })
+	db.select('*').from('posts').then((posts)=>{
+		if (posts.length) {
+			console.log(posts)
+		  } else {
+			res.status(400).json('Not found')
+		  }
+	})
 	res.send("it is working");
 });
 
