@@ -14,18 +14,19 @@ const db = knex({
 });
 
 const app = express();
-
-app.use(cors());
 app.use(bodyParser.json());
-// app.get('/data', (req, res) => {
-// 	db.select('*').from('posts').then((posts)=>{
-// 		if (posts.length) {
-// 			res.send(posts);
-// 		  } else {
-// 			res.status(400).json('Not found')
-// 		  }
-// 	})
-// });
+app.use(cors());
+
+
+app.get('/data', (req, res) => {
+	db.select('*').from('posts').then((posts)=>{
+		if (posts.length) {
+			res.send(posts);
+		  } else {
+			res.status(400).json('Not found')
+		  }
+	})
+});
 
 app.post('/', (req, res) => {
 	const { title, description,image } = req.body;
