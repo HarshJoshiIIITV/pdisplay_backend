@@ -31,7 +31,7 @@ app.post('/', (req, res) => {
 	const { title, description,image } = req.body;
 	console.log(req);
 	console.log(title,description,image);
-	db('posts').insert({title_db: title,description_db:description,image_db:image})
+	// db('posts').insert({title_db: title,description_db:description,image_db:image})
 });
 
 
