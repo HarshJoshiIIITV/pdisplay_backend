@@ -4,30 +4,30 @@ const cors = require('cors');
 const knex = require('knex');
 
 
-// const db = knex({
-// 	client: 'pg',
-// 	rejectUnauthorized: false,
-// 	connection: {
-// 		connectionString: process.env.DATABASE_URL,
-// 		ssl: true,
-// 	},
-// });
-// console.log(process.env.DATABASE_URL);
+const db = knex({
+	client: 'pg',
+	rejectUnauthorized: false,
+	connection: {
+		connectionString: process.env.DATABASE_URL,
+		ssl: true,
+	},
+});
 
 const app = express();
 
 app.use(cors());
 app.use(bodyParser.json());
 app.get('/', (req, res) => {
-	// db.select('*').from('posts').then((posts)=>{
-	// 	if (posts.length) {
-	// 		console.log(posts)
-	// 	  } else {
-	// 		res.status(400).json('Not found')
-	// 	  }
-	// })
+	db.select('*').from('posts').then((posts)=>{
+		if (posts.length) {
+			console.log(posts)
+		  } else {
+			res.status(400).json('Not found')
+		  }
+	})
 	res.send("it is working");
 });
+
 app.post('/register', (req, res) => {
 	const { title, description,image } = req.body;
 	console.log(title,description,image);
