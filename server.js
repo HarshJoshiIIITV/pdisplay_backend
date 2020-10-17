@@ -25,7 +25,6 @@ app.get('/', (req, res) => {
 			res.status(400).json('Not found')
 		  }
 	})
-	res.send("it is working");
 });
 
 app.post('/register', (req, res) => {
