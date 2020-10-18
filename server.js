@@ -17,6 +17,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+app.options('/data', cors());
 
 app.get('/', (req, res) => {
 	db.select('*').from('posts').then((posts)=>{
