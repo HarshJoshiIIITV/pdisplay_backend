@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 			res.status(400).json('Not found')
 		  }
 	}).catch((err)=>{
-		res.send("error occur")
+		res.send(err);
 	})
 });
 
