@@ -34,6 +34,7 @@ app.get('/', (req, res) => {
 app.post('/data', (req, res) => {
 	const { title, description,image } = req.body;
 	db('posts').insert({title_db: title,description_db:description,image_db:image})
+	res.send("i am hearing");
 });
 
 
