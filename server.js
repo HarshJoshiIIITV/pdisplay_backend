@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const knex = require('knex');
+const { response } = require('express');
 
 
 const db = knex({
@@ -33,8 +34,9 @@ app.get('/', (req, res) => {
 
 app.post('/data', (req, res) => {
 	const { title, description,image } = req.body;
-	db('posts').insert({title_db: title,description_db:description,image_db:image})
-	res.send("i am hearing");
+	db('posts').insert({title_db: title,description_db:description,image_db:image}).then(()=>{
+		res.send("i am hearing");
+	}).catch((e)=>res.send(e))
 });
 
 
