@@ -18,20 +18,20 @@ app.use(bodyParser.json());
 app.use(cors());
 
 
-app.get('/data', (req, res) => {
+app.get('/', (req, res) => {
 	db.select('*').from('posts').then((posts)=>{
 		if (posts.length) {
 			res.send(posts);
 		  } else {
 			res.status(400).json('Not found')
 		  }
+	}).catch((err)=>{
+		res.send("error occur")
 	})
 });
 
-app.post('/', (req, res) => {
+app.post('/data', (req, res) => {
 	const { title, description,image } = req.body;
-	console.log(req);
-	console.log(title,description,image);
 	db('posts').insert({title_db: title,description_db:description,image_db:image})
 });
 
