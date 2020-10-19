@@ -1,8 +1,8 @@
 CREATE TABLE posts (
 	id serial PRIMARY KEY,
-  title_db text NOT NULL,
+ 	title_db text NOT NULL,
 	description_db text NOT NULL,
-	image_db text NO NULL 
+	image_db text NOT NULL 
 );
 
 
